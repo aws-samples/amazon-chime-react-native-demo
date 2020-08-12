@@ -35,6 +35,7 @@ class NativeMobileSDKBridge(
         private const val TAG = "ChimeReactNativeSDKDemoManager"
         private const val KEY_MEETING_ID = "MeetingId"
         private const val KEY_ATTENDEE_ID = "AttendeeId"
+        private const val KEY_EXTERNAL_USER_ID = "ExternalUserId"
         private const val KEY_JOIN_TOKEN = "JoinToken"
         private const val KEY_MEDIA_PLACEMENT = "MediaPlacement"
         private const val KEY_AUDIO_FALLBACK_URL = "AudioFallbackUrl"
@@ -121,6 +122,7 @@ class NativeMobileSDKBridge(
         return try {
             val meetingId = meetingInfo.getString(KEY_MEETING_ID) ?: ""
             val attendeeId = attendeeInfo.getString(KEY_ATTENDEE_ID) ?: ""
+            val externalUserId = attendeeInfo.getString(KEY_EXTERNAL_USER_ID) ?: ""
             val joinToken = attendeeInfo.getString(KEY_JOIN_TOKEN) ?: ""
             var audioFallbackUrl = ""
             var audioHostUrl = ""
@@ -136,7 +138,7 @@ class NativeMobileSDKBridge(
             }
 
             MeetingSessionConfiguration(meetingId,
-                    MeetingSessionCredentials(attendeeId, joinToken),
+                    MeetingSessionCredentials(attendeeId, externalUserId, joinToken),
                     MeetingSessionURLs(audioFallbackUrl, audioHostUrl, turnControlUrl, signalingUrl, ::defaultUrlRewriter))
         } catch (exception: Exception) {
             logger.error(TAG, "Error creating session configuration: ${exception.localizedMessage}")

@@ -18,8 +18,8 @@ For more details about the SDK APIs, please refer to the **Getting Started** gui
 ### Android
 * Create a folder named `libs` under `android/app`
 * Download the Amazon Chime SDK binaries
-    - [amazon-chime-sdk-0.5.1.tar.gz](https://amazon-chime-sdk.s3.amazonaws.com/android/amazon-chime-sdk/0.5.1/amazon-chime-sdk-0.5.1.tar.gz)
-    - [amazon-chime-sdk-media-0.4.3.tar.gz](https://amazon-chime-sdk.s3.amazonaws.com/android/amazon-chime-sdk-media/0.4.3/amazon-chime-sdk-media-0.4.3.tar.gz)
+    - [amazon-chime-sdk-0.7.0.tar.gz](https://amazon-chime-sdk-android.s3.amazonaws.com/sdk/0.7.0/amazon-chime-sdk-0.7.0.tar.gz)
+    - [amazon-chime-sdk-media-0.6.0.tar.gz](https://amazon-chime-sdk-android.s3.amazonaws.com/media/0.6.0/amazon-chime-sdk-media-0.6.0.tar.gz)
 * Unzip, copy both `amazon-chime-sdk.aar` and `amazon-chime-sdk-media.aar` into the `android/app/libs` folder
 
 ### iOS
