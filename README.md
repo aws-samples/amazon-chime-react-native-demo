@@ -24,8 +24,8 @@ For more details about the SDK APIs, please refer to the **Getting Started** gui
 
 ### iOS
 * Download the Amazon Chime SDK binaries
-    - [AmazonChimeSDK-0.6.1.tar.gz](https://amazon-chime-sdk.s3.amazonaws.com/ios/amazon-chime-sdk-without-bitcode/0.6.1/AmazonChimeSDK-0.6.1.tar.gz)
-    - [AmazonChimeSDKMedia-0.4.3.tar.gz](https://amazon-chime-sdk.s3.amazonaws.com/ios/amazon-chime-sdk-media-without-bitcode/0.4.3/AmazonChimeSDKMedia-0.4.3.tar.gz)
+    - [AmazonChimeSDK-0.8.1.tar.gz](https://amazon-chime-sdk-ios.s3.amazonaws.com/sdk-without-bitcode/0.8.1/AmazonChimeSDK-0.8.1.tar.gz)
+    - [AmazonChimeSDKMedia-0.6.0.tar.gz](https://amazon-chime-sdk-ios.s3.amazonaws.com/media-without-bitcode/0.6.0/AmazonChimeSDKMedia-0.6.0.tar.gz)
 * Unzip, copy both `AmazonChimeSDK.framework` and `AmazonChimeSDKMedia.framework` into the `ios/RNDemo` folder
 
 ## 3. Deploy the serverless demo
