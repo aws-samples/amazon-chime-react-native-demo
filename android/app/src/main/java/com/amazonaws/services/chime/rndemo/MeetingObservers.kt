@@ -90,6 +90,10 @@ class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObser
         // Not implemented for demo purposes
     }
 
+    override fun onVideoTileSizeChanged(tileState: VideoTileState) {
+        // Not implemented for demo purposes
+    }
+
     override fun onAudioSessionCancelledReconnect() {
         // Not implemented for demo purposes
     }

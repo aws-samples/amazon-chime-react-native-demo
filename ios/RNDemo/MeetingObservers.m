@@ -101,6 +101,11 @@
   // Not implemented for demo purposes
 }
 
+- (void)videoTileSizeDidChangeWithTileState:(VideoTileState * _Nonnull)tileState {
+  // Not implemented for demo purposes
+}
+
+
 - (void)audioSessionDidCancelReconnect
 {
   // Not implemented for demo purposes
