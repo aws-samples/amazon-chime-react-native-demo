@@ -32,7 +32,7 @@ For more details about the SDK APIs, please refer to the **Getting Started** gui
 Follow the instructions in [amazon-chime-sdk-js](https://github.com/aws/amazon-chime-sdk-js/tree/master/demos/serverless) to deploy the serverless demo.
 
 ## 4. Update the server URLs
-Update `SERVER_URL` and `SERVER_REGION` in `src/Api.js` with the server URL and region of the serverless demo you created.
+Update `SERVER_URL` and `SERVER_REGION` in `src/utils/Api.js` with the server URL and region of the serverless demo you created.
 
 ## 5. Build and run
 Run `npm start` to start the React Native development server.
