@@ -100,7 +100,7 @@ The following files are all under `android/app/src/main/java/com/amazonaws/servi
 * `NativeMobileSDKBridgePackage.kt`: Package definition to register the bridge in the Android application.
 * `MainApplication.java`: Because **React Native framework already generates this file for you**, you only need to add the following line in function `protected List<ReactPackage> getPackages()` to register the Native Module.
 ~~~kotlin
-packages.add(new ChimeReactNativeSDKDemoPackage());
+packages.add(new NativeMobileSDKBridgePackage());
 ~~~
 
 # More Examples in the Demo Application
