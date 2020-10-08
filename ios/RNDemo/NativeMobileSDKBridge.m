@@ -36,6 +36,9 @@ RCT_EXPORT_MODULE();
 # pragma mark: Native Function
 RCT_EXPORT_METHOD(startMeeting:(NSDictionary *)meetingInfoDict attendeeInfo:(NSDictionary *)attendeeInfoDict)
 {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
+  });
   if (meetingSession != nil)
   {
     [meetingSession.audioVideo stop];
@@ -91,6 +94,9 @@ RCT_EXPORT_METHOD(startMeeting:(NSDictionary *)meetingInfoDict attendeeInfo:(NSD
 
 RCT_EXPORT_METHOD(stopMeeting)
 {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [[UIApplication sharedApplication] setIdleTimerDisabled: NO];
+  });
   [meetingSession.audioVideo stop];
   meetingSession = nil;
   [self sendEventWithName:kEventOnMeetingEnd body: nil];
