@@ -40,6 +40,7 @@ RCT_EXPORT_METHOD(startMeeting:(NSDictionary *)meetingInfoDict attendeeInfo:(NSD
   {
     [meetingSession.audioVideo stop];
     meetingSession = nil;
+    [NSThread sleepForTimeInterval:3.0f];
   }
 
   logger = [[ConsoleLogger alloc] initWithName:@"NativeMobileSDKBridge" level:LogLevelDEFAULT];
