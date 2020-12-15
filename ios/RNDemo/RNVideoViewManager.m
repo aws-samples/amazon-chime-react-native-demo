@@ -12,7 +12,7 @@ RCT_EXPORT_MODULE(RNVideoView);
 
 - (UIView *)view
 {
-  RNVideoView *innerView = [[RNVideoView alloc] init];
+  DefaultVideoRenderView *innerView = [[DefaultVideoRenderView alloc] init];
   innerView.contentMode = UIViewContentModeScaleAspectFit;
   return innerView;
 }

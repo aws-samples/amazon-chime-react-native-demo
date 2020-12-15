@@ -130,7 +130,7 @@ RCT_EXPORT_METHOD(bindVideoView:(NSNumber * _Nonnull)viewIdentifier tileId:(NSNu
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     UIView* view = [self.bridge.uiManager viewForReactTag:viewIdentifier];
-    [meetingSession.audioVideo bindVideoViewWithVideoView:(RNVideoView*)view tileId:[tileId integerValue]];
+    [meetingSession.audioVideo bindVideoViewWithVideoView:(DefaultVideoRenderView*)view tileId:[tileId integerValue]];
   });
 }
 
