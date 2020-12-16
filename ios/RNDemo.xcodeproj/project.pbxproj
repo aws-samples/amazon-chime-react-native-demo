@@ -15,7 +15,6 @@
 		9D93B72A3CCF952710A1789F /* libPods-RNDemo-RNDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1391CD09B54295AAFC9C0AB /* libPods-RNDemo-RNDemoTests.a */; };
 		B0080A267577D306F5FD232F /* libPods-RNDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5127A089390D3A04A511BC /* libPods-RNDemo.a */; };
 		B475C84B2491805F00AE5FA2 /* MeetingObservers.m in Sources */ = {isa = PBXBuildFile; fileRef = B475C84A2491805F00AE5FA2 /* MeetingObservers.m */; };
-		B48B03A02433E4A3005E2128 /* RNVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B48B039C2433E4A3005E2128 /* RNVideoView.m */; };
 		B48B03A12433E4A3005E2128 /* RNVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B48B039E2433E4A3005E2128 /* RNVideoViewManager.m */; };
 		B4D80A94242E3F6C0099AF3D /* AmazonChimeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D80A92242E3F6C0099AF3D /* AmazonChimeSDK.framework */; };
 		B4D80A95242E3F6C0099AF3D /* AmazonChimeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B4D80A92242E3F6C0099AF3D /* AmazonChimeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -67,8 +66,6 @@
 		AC28CFBA3D6AF78D5C1F3124 /* Pods-RNDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNDemo.release.xcconfig"; path = "Target Support Files/Pods-RNDemo/Pods-RNDemo.release.xcconfig"; sourceTree = "<group>"; };
 		B475C8492491805F00AE5FA2 /* MeetingObservers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingObservers.h; path = RNDemo/MeetingObservers.h; sourceTree = "<group>"; };
 		B475C84A2491805F00AE5FA2 /* MeetingObservers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingObservers.m; path = RNDemo/MeetingObservers.m; sourceTree = "<group>"; };
-		B48B039C2433E4A3005E2128 /* RNVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNVideoView.m; path = RNDemo/RNVideoView.m; sourceTree = "<group>"; };
-		B48B039D2433E4A3005E2128 /* RNVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNVideoView.h; path = RNDemo/RNVideoView.h; sourceTree = "<group>"; };
 		B48B039E2433E4A3005E2128 /* RNVideoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNVideoViewManager.m; path = RNDemo/RNVideoViewManager.m; sourceTree = "<group>"; };
 		B48B039F2433E4A3005E2128 /* RNVideoViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNVideoViewManager.h; path = RNDemo/RNVideoViewManager.h; sourceTree = "<group>"; };
 		B4D80A92242E3F6C0099AF3D /* AmazonChimeSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AmazonChimeSDK.framework; path = RNDemo/AmazonChimeSDK.framework; sourceTree = "<group>"; };
@@ -199,8 +196,6 @@
 			children = (
 				B475C8492491805F00AE5FA2 /* MeetingObservers.h */,
 				B475C84A2491805F00AE5FA2 /* MeetingObservers.m */,
-				B48B039D2433E4A3005E2128 /* RNVideoView.h */,
-				B48B039C2433E4A3005E2128 /* RNVideoView.m */,
 				B48B039F2433E4A3005E2128 /* RNVideoViewManager.h */,
 				B48B039E2433E4A3005E2128 /* RNVideoViewManager.m */,
 				B4D80A9A242E3FC80099AF3D /* NativeMobileSDKBridge.m */,
@@ -406,7 +401,6 @@
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B4D80A9B242E3FC80099AF3D /* NativeMobileSDKBridge.m in Sources */,
 				B48B03A12433E4A3005E2128 /* RNVideoViewManager.m in Sources */,
-				B48B03A02433E4A3005E2128 /* RNVideoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

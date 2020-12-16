@@ -7,7 +7,6 @@
 #import <React/RCTViewManager.h>
 #import <AmazonChimeSDK/AmazonChimeSDK-Swift.h>
 #import <Foundation/Foundation.h>
-#import "RNVideoView.h"
 
 @interface RNVideoViewManager : RCTViewManager
 @end
