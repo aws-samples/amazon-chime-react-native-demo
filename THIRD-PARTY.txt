@@ -227,13 +227,13 @@ limitations under the License.
 ** @react-native-community/eslint-config; version 0.0.5 --
 https://github.com/facebook/react-native/tree/master/packages/eslint-config-react-native-community#readme
 Copyright (c) Facebook, Inc. and its affiliates.
-** babel-jest; version 24.9.0 -- https://github.com/facebook/jest
+** babel-jest; version 26.6.3 -- https://github.com/facebook/jest
 Copyright (c) Facebook, Inc. and its affiliates.
 ** Flipper; version 0.33.1 -- https://fbflipper.com/
 Copyright (c) Facebook, Inc. and its affiliates.
 ** Hermes; version 0.5.0 -- https://github.com/facebook/hermes
 Copyright (c) Facebook, Inc. and its affiliates.
-** jest; version 24.9.0 -- https://jestjs.io/
+** jest; version 26.6.3 -- https://jestjs.io/
 Copyright (c) Facebook, Inc. and its affiliates.
 ** metro-react-native-babel-preset; version 0.58.0 --
 https://github.com/facebook/metro

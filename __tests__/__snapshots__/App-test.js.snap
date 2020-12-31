@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "height": "95%",
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 30,
+        "fontWeight": "700",
+      }
+    }
+  >
+    Mobile SDK Demo
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "grey",
+        "marginBottom": 25,
+        "marginTop": 10,
+      }
+    }
+  >
+    powered by React Native
+  </Text>
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[Function]}
+    placeholder="Meeting ID"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "borderColor": "black",
+        "borderWidth": 1,
+        "color": "black",
+        "height": 40,
+        "margin": 5,
+        "padding": 10,
+        "width": "50%",
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[Function]}
+    placeholder="Your Name"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "borderColor": "black",
+        "borderWidth": 1,
+        "color": "black",
+        "height": 40,
+        "margin": 5,
+        "padding": 10,
+        "width": "50%",
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <View
+    accessibilityRole="button"
+    accessibilityState={Object {}}
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#007AFF",
+              "fontSize": 18,
+              "margin": 8,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Start
+      </Text>
+    </View>
+  </View>
+</View>
+`;
