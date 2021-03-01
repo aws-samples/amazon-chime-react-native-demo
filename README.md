@@ -70,7 +70,19 @@ The following camera and microphone permissions need to be granted to enable aud
 
 More details on how to request permissions can be found in [Android](https://developer.android.com/training/permissions/requesting) and [iOS](https://developer.apple.com/documentation/avfoundation/cameras_and_media_capture/requesting_authorization_for_media_capture_on_ios?language=objc) official documents.
 
-## 3. Connect React Native code to the Amazon Chime SDK
+## 3. Add libraries for SDK
+
+### Android
+You'll need following libraries to be able to build the Android application.
+From `app/build.gradle`
+```
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+```
+
+## 4. Connect React Native code to the Amazon Chime SDK
 
 You need [Native Module](https://reactnative.dev/docs/native-modules-ios) to proxy calls to the Amazon Chime SDK. A Native Module exposes native methods as JavaScript functions to be used in the React Native code. And Amazon Chime SDK callbacks are converted to React Native events that are handled by JavaScript listeners.
 
