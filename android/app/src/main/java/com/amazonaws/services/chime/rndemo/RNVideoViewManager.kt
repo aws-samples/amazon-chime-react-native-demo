@@ -14,7 +14,6 @@ import com.facebook.react.uimanager.annotations.ReactProp
 
 class RNVideoViewManager : SimpleViewManager<DefaultVideoRenderView>() {
     private val logger = ConsoleLogger(LogLevel.DEBUG)
-
     companion object {
         // The React Native side is expecting a component named RNVideoView
         private const val REACT_CLASS = "RNVideoView"
@@ -37,5 +36,10 @@ class RNVideoViewManager : SimpleViewManager<DefaultVideoRenderView>() {
         NativeMobileSDKBridge.meetingSession?.let {
             it.audioVideo.bindVideoView(renderView, tileId)
         }
+    }
+
+    @ReactProp(name = "mirror")
+    fun setMirror(renderView: DefaultVideoRenderView, mirror: Boolean) {
+        renderView.mirror = mirror
     }
 }
