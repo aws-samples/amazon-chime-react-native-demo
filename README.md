@@ -74,12 +74,39 @@ More details on how to request permissions can be found in [Android](https://dev
 
 ### Android
 You'll need following libraries to be able to build the Android application.
+From `build.gradle`
+```
+buildscript {
+    ext {
+        kotlin_version = '1.3.71'
+        minSdkVersion = 21
+        compileSdkVersion = 29
+        targetSdkVersion = 29
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+allprojects {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+```
+
 From `app/build.gradle`
 ```
-    implementation 'com.google.code.gson:gson:2.8.6'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+dependencies {
+    implementation(name: 'amazon-chime-sdk', ext: 'aar')
+    implementation(name: 'amazon-chime-sdk-media', ext: 'aar')
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.code.gson:gson:2.8.6'
+}
 ```
 
 ## 4. Connect React Native code to the Amazon Chime SDK
@@ -98,6 +125,7 @@ To directly reuse code from this demo, here are the files you likely need and ma
 * `src/components/RNVideoRenderView.js`: Wrapper for the video tile UI component.
 
 ### iOS
+Add these files to you iOS project through **Xcode**
 * `ios/RNDemo/MeetingObserver.h` and `ios/RNDemo/MeetingObserver.m`: Event handlers to pass Amazon Chime SDK events into React Native.
 * `ios/RNDemo/NativeMobileSDKBridge.h` and `ios/RNDemo/NativeMobileSDKBridge.m`: Functions that will be available in React Native through Native Module.
 * `ios/RNDemo/RNVideoView.h` and `ios/RNDemo/RNVideoView.m`: UI component definition for the video tile. 
@@ -105,6 +133,7 @@ To directly reuse code from this demo, here are the files you likely need and ma
 
 ### Android 
 The following files are all under `android/app/src/main/java/com/amazonaws/services/chime/rndemo`.
+If you are copy pasting the following files, make sure to adjust the package path and import path accordingly at the top of these files.
 * `NativeMobileSDKBridge.kt`:Functions that will be available in React Native through Native Module.
 * `RNEventEmitter.kt`: Utility class that provides helper to send events to React Native.
 * `MeetingObservers.kt`: Event handlers to pass Amazon Chime SDK events into React Native.
