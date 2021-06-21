@@ -6,7 +6,7 @@ This demo shows how to integrate the [Amazon Chime SDK](https://aws.amazon.com/b
 For more details about the SDK APIs, please refer to the **Getting Started** guide of the following SDK repositories:
 * [amazon-chime-sdk-android](https://github.com/aws/amazon-chime-sdk-android/blob/master/guides/01_Getting_Started.md)
 * [amazon-chime-sdk-ios](https://github.com/aws/amazon-chime-sdk-ios/blob/master/guides/01_Getting_Started.md)
- 
+
 > *Note: Deploying the Amazon Chime SDK demo applications contained in this repository will cause your AWS Account to be billed for services, including the Amazon Chime SDK, used by the application.*
 
 # How to Run the React Native Demo Application
@@ -128,10 +128,9 @@ To directly reuse code from this demo, here are the files you likely need and ma
 Add these files to you iOS project through **Xcode**
 * `ios/RNDemo/MeetingObserver.h` and `ios/RNDemo/MeetingObserver.m`: Event handlers to pass Amazon Chime SDK events into React Native.
 * `ios/RNDemo/NativeMobileSDKBridge.h` and `ios/RNDemo/NativeMobileSDKBridge.m`: Functions that will be available in React Native through Native Module.
-* `ios/RNDemo/RNVideoView.h` and `ios/RNDemo/RNVideoView.m`: UI component definition for the video tile. 
 * `ios/RNDemo/RNVideoViewManager.h` and `ios/RNDemo/RNVideoViewManager.m`: UI component manager.
 
-### Android 
+### Android
 The following files are all under `android/app/src/main/java/com/amazonaws/services/chime/rndemo`.
 If you are copy pasting the following files, make sure to adjust the package path and import path accordingly at the top of these files.
 * `NativeMobileSDKBridge.kt`:Functions that will be available in React Native through Native Module.
@@ -149,7 +148,7 @@ packages.add(new NativeMobileSDKBridgePackage());
 
 1. When the login button is pressed, `startMeeting()` in  `Login.js` is called.
 2. After `App.js` completes HTTP request, the meeting response object is passed into `NativeFuntion.startMeeting()`
-3. As defined in `Bridge.js`, the function will call the corresponding native platform code, ochastrated by React Bridge. 
+3. As defined in `Bridge.js`, the function will call the corresponding native platform code, ochastrated by React Bridge.
     - For iOS
     ~~~objective-c
     // NativeMobileSDKBridge.m
@@ -169,7 +168,7 @@ packages.add(new NativeMobileSDKBridgePackage());
         - For iOS
         ~~~objective-c
         // MeetingObservers.m
-        - (void)audioSessionDidStartWithReconnecting:(BOOL)reconnecting 
+        - (void)audioSessionDidStartWithReconnecting:(BOOL)reconnecting
         {
           if (!reconnecting)
           {
@@ -220,7 +219,7 @@ RCT_EXPORT_METHOD(bindVideoView:(NSNumber * _Nonnull)viewIdentifier tileId:(NSNu
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     UIView* view = [self.bridge.uiManager viewForReactTag:viewIdentifier];
-    [meetingSession.audioVideo bindVideoViewWithVideoView:(RNVideoView*)view tileId:[tileId integerValue]];
+    [meetingSession.audioVideo bindVideoViewWithVideoView:(DefaultVideoRenderView*)view tileId:[tileId integerValue]];
   });
 }
 ~~~
