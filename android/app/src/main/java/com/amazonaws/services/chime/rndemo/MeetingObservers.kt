@@ -11,20 +11,19 @@ import com.amazonaws.services.chime.rndemo.RNEventEmitter.Companion.RN_EVENT_ATT
 import com.amazonaws.services.chime.rndemo.RNEventEmitter.Companion.RN_EVENT_ATTENDEES_UNMUTE
 import com.amazonaws.services.chime.rndemo.RNEventEmitter.Companion.RN_EVENT_VIDEO_TILE_ADD
 import com.amazonaws.services.chime.rndemo.RNEventEmitter.Companion.RN_EVENT_VIDEO_TILE_REMOVE
-import com.amazonaws.services.chime.sdk.meetings.audiovideo.AttendeeInfo
-import com.amazonaws.services.chime.sdk.meetings.audiovideo.AudioVideoObserver
-import com.amazonaws.services.chime.sdk.meetings.audiovideo.SignalUpdate
-import com.amazonaws.services.chime.sdk.meetings.audiovideo.VolumeUpdate
+import com.amazonaws.services.chime.sdk.meetings.audiovideo.*
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileObserver
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileState
+import com.amazonaws.services.chime.sdk.meetings.device.DeviceChangeObserver
+import com.amazonaws.services.chime.sdk.meetings.device.MediaDevice
 import com.amazonaws.services.chime.sdk.meetings.realtime.RealtimeObserver
 import com.amazonaws.services.chime.sdk.meetings.session.MeetingSessionStatus
 import com.amazonaws.services.chime.sdk.meetings.utils.logger.ConsoleLogger
 import com.amazonaws.services.chime.sdk.meetings.utils.logger.LogLevel
 
-class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObserver, VideoTileObserver, AudioVideoObserver {
+class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObserver, VideoTileObserver, AudioVideoObserver, DeviceChangeObserver {
     private val logger = ConsoleLogger(LogLevel.DEBUG)
-
+    internal var configureActiveAudioDevice :(() -> Unit)? = null
     companion object {
         private const val TAG = "MeetingObservers"
     }
@@ -136,5 +135,9 @@ class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObser
 
     override fun onVideoSessionStopped(sessionStatus: MeetingSessionStatus) {
         // Not implemented for demo purposes
+    }
+
+    override fun onAudioDeviceChanged(freshAudioDeviceList: List<MediaDevice>) {
+        configureActiveAudioDevice?.invoke()
     }
 }

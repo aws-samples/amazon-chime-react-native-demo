@@ -10,6 +10,7 @@ import android.content.pm.PackageManager
 import androidx.core.content.ContextCompat
 import com.amazonaws.services.chime.rndemo.RNEventEmitter.Companion.RN_EVENT_ERROR
 import com.amazonaws.services.chime.rndemo.RNEventEmitter.Companion.RN_EVENT_MEETING_END
+import com.amazonaws.services.chime.sdk.meetings.device.MediaDeviceType
 import com.amazonaws.services.chime.sdk.meetings.session.DefaultMeetingSession
 import com.amazonaws.services.chime.sdk.meetings.session.MeetingSession
 import com.amazonaws.services.chime.sdk.meetings.session.MeetingSessionConfiguration
@@ -18,17 +19,15 @@ import com.amazonaws.services.chime.sdk.meetings.session.MeetingSessionURLs
 import com.amazonaws.services.chime.sdk.meetings.session.defaultUrlRewriter
 import com.amazonaws.services.chime.sdk.meetings.utils.logger.ConsoleLogger
 import com.amazonaws.services.chime.sdk.meetings.utils.logger.LogLevel
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.bridge.*
 import com.facebook.react.modules.core.PermissionAwareActivity
 import com.facebook.react.modules.core.PermissionListener
 
 class NativeMobileSDKBridge(
         reactContext: ReactApplicationContext,
         private val eventEmitter: RNEventEmitter,
-        private val meetingObservers: MeetingObservers) : ReactContextBaseJavaModule(reactContext), PermissionListener {
+        private val meetingObservers: MeetingObservers
+        ) : ReactContextBaseJavaModule(reactContext), PermissionListener {
 
     companion object {
         private const val WEBRTC_PERMISSION_REQUEST_CODE = 1
@@ -108,13 +107,25 @@ class NativeMobileSDKBridge(
         } ?: false
     }
 
+    private fun configureActiveAudioDevice() {
+        meetingSession?.let{
+            val devices = it.audioVideo.listAudioDevices().sortedBy { device -> device.order }
+            if (devices.isNotEmpty()) {
+                it.audioVideo.chooseAudioDevice(devices[0])
+            }
+        }
+    }
+
     private fun startAudioVideo() {
         meetingSession?.let {
             it.audioVideo.addRealtimeObserver(meetingObservers)
             it.audioVideo.addVideoTileObserver(meetingObservers)
             it.audioVideo.addAudioVideoObserver(meetingObservers)
+            it.audioVideo.addDeviceChangeObserver(meetingObservers)
             it.audioVideo.start()
             it.audioVideo.startRemoteVideo()
+            configureActiveAudioDevice()
+            meetingObservers.configureActiveAudioDevice = { configureActiveAudioDevice() }
         }
     }
 
