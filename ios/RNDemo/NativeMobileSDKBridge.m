@@ -141,6 +141,7 @@ RCT_EXPORT_METHOD(unbindVideoView:(NSNumber * _Nonnull)tileId)
   });
 }
 
+#pragma mark: Media Related Function
 -(void)configureActiveAudioDevice:(NSArray<MediaDevice *> * _Nonnull)audioDeviceList
 { 
   // If wiredHeadphone connected, use Build-in receiver
@@ -154,7 +155,6 @@ RCT_EXPORT_METHOD(unbindVideoView:(NSNumber * _Nonnull)tileId)
   }
 }
 
-#pragma mark: Media Related Function
 -(void)startVideo
 {
   AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
