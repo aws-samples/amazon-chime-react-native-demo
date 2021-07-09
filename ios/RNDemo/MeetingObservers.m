@@ -163,4 +163,9 @@
   // Not implemented for demo purposes
 }
 
+- (void)audioDeviceDidChangeWithFreshAudioDeviceList:(NSArray<MediaDevice *> * _Nonnull)freshAudioDeviceList
+{
+  [_bridge configureActiveAudioDevice:freshAudioDeviceList];
+}
+
 @end

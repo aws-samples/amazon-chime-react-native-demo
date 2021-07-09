@@ -141,6 +141,19 @@ RCT_EXPORT_METHOD(unbindVideoView:(NSNumber * _Nonnull)tileId)
   });
 }
 
+-(void)configureActiveAudioDevice:(NSArray<MediaDevice *> * _Nonnull)audioDeviceList
+{ 
+  // If wiredHeadphone connected, use Build-in receiver
+  // https://github.com/aws/amazon-chime-sdk-ios/blob/master/AmazonChimeSDK/AmazonChimeSDK/device/DefaultDeviceController.swift#L37
+  AVAudioSessionPortDescription *currentOutput = (AVAudioSessionPortDescription *)[[[[AVAudioSession sharedInstance] currentRoute] outputs] firstObject];
+  if([currentOutput.portType isEqual:AVAudioSessionPortHeadphones])
+  {
+    [meetingSession.audioVideo chooseAudioDeviceWithMediaDevice:[audioDeviceList firstObject]];
+  } else {
+    [meetingSession.audioVideo chooseAudioDeviceWithMediaDevice:[audioDeviceList lastObject]];
+  }
+}
+
 #pragma mark: Media Related Function
 -(void)startVideo
 {
@@ -191,7 +204,9 @@ RCT_EXPORT_METHOD(unbindVideoView:(NSNumber * _Nonnull)tileId)
   [meetingSession.audioVideo addRealtimeObserverWithObserver:observer];
   [meetingSession.audioVideo addVideoTileObserverWithObserver:observer];
   [meetingSession.audioVideo addAudioVideoObserverWithObserver:observer];
+  [meetingSession.audioVideo addDeviceChangeObserverWithObserver:observer];
   [self startAudioVideo];
+  [self configureActiveAudioDevice:[meetingSession.audioVideo listAudioDevices]];
 }
 
 -(void)startAudioVideo
@@ -201,8 +216,6 @@ RCT_EXPORT_METHOD(unbindVideoView:(NSNumber * _Nonnull)tileId)
    if (started && error == nil)
    {
      [logger infoWithMsg:@"RN meeting session was started successfully"];
-
-     [meetingSession.audioVideo startRemoteVideo];
    }
    else
    {
