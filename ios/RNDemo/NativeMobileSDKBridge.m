@@ -143,14 +143,26 @@ RCT_EXPORT_METHOD(unbindVideoView:(NSNumber * _Nonnull)tileId)
 
 #pragma mark: Media Related Function
 -(void)configureActiveAudioDevice:(NSArray<MediaDevice *> * _Nonnull)audioDeviceList
-{ 
-  // If wiredHeadphone connected, use Build-in receiver
-  // https://github.com/aws/amazon-chime-sdk-ios/blob/master/AmazonChimeSDK/AmazonChimeSDK/device/DefaultDeviceController.swift#L37
-  AVAudioSessionPortDescription *currentOutput = (AVAudioSessionPortDescription *)[[[[AVAudioSession sharedInstance] currentRoute] outputs] firstObject];
-  if([currentOutput.portType isEqual:AVAudioSessionPortHeadphones])
+{
+
+  NSArray<AVAudioSessionPortDescription *> *currentOutputs = [[[AVAudioSession sharedInstance] currentRoute] outputs];
+  
+  __block BOOL isHeadsetPluggedIn = false;
+  
+  // Judge useing headohone, if current routes has one or more headphones port.
+   [currentOutputs enumerateObjectsUsingBlock:^(AVAudioSessionPortDescription *output, NSUInteger idx, BOOL *stop) {
+     if([output.portType isEqual:AVAudioSessionPortHeadphones]){
+       isHeadsetPluggedIn = true;
+     }
+   }];
+  
+  // If wiredHeadset connected, use Build-in receiver
+  if(isHeadsetPluggedIn)
   {
+    // use Build-in receiver
     [meetingSession.audioVideo chooseAudioDeviceWithMediaDevice:[audioDeviceList firstObject]];
   } else {
+    // use loud speaker (or other device)
     [meetingSession.audioVideo chooseAudioDeviceWithMediaDevice:[audioDeviceList lastObject]];
   }
 }
