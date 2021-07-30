@@ -11,7 +11,10 @@ import com.amazonaws.services.chime.rndemo.RNEventEmitter.Companion.RN_EVENT_ATT
 import com.amazonaws.services.chime.rndemo.RNEventEmitter.Companion.RN_EVENT_ATTENDEES_UNMUTE
 import com.amazonaws.services.chime.rndemo.RNEventEmitter.Companion.RN_EVENT_VIDEO_TILE_ADD
 import com.amazonaws.services.chime.rndemo.RNEventEmitter.Companion.RN_EVENT_VIDEO_TILE_REMOVE
-import com.amazonaws.services.chime.sdk.meetings.audiovideo.*
+import com.amazonaws.services.chime.sdk.meetings.audiovideo.AttendeeInfo
+import com.amazonaws.services.chime.sdk.meetings.audiovideo.AudioVideoObserver
+import com.amazonaws.services.chime.sdk.meetings.audiovideo.SignalUpdate
+import com.amazonaws.services.chime.sdk.meetings.audiovideo.VolumeUpdate
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileObserver
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileState
 import com.amazonaws.services.chime.sdk.meetings.device.DeviceChangeObserver
