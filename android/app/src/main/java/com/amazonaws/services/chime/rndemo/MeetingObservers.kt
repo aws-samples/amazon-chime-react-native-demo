@@ -103,7 +103,7 @@ class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObser
 
     override fun onAudioSessionStarted(reconnecting: Boolean) {
         logger.info(TAG, "Received event for audio session started. Reconnecting: $reconnecting")
-
+        configureActiveAudioDevice?.invoke()
         if (!reconnecting) {
             eventEmitter.sendReactNativeEvent(RNEventEmitter.RN_EVENT_MEETING_START, null)
         }

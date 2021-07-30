@@ -118,14 +118,13 @@ class NativeMobileSDKBridge(
 
     private fun startAudioVideo() {
         meetingSession?.let {
+            meetingObservers.configureActiveAudioDevice = { configureActiveAudioDevice() }
             it.audioVideo.addRealtimeObserver(meetingObservers)
             it.audioVideo.addVideoTileObserver(meetingObservers)
             it.audioVideo.addAudioVideoObserver(meetingObservers)
             it.audioVideo.addDeviceChangeObserver(meetingObservers)
             it.audioVideo.start()
             it.audioVideo.startRemoteVideo()
-            configureActiveAudioDevice()
-            meetingObservers.configureActiveAudioDevice = { configureActiveAudioDevice() }
         }
     }
 
