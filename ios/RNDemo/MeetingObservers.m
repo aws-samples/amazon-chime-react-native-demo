@@ -163,4 +163,16 @@
   // Not implemented for demo purposes
 }
 
+- (void)dataMessageDidReceivedWithDataMessage:(DataMessage *)dataMessage {
+  [_bridge sendEventWithName:kEventOnDataMessageReceive body:@{
+    @"data":[dataMessage text],
+    @"topic":[dataMessage topic],
+    @"senderAttendeeId":[dataMessage senderAttendeeId],
+    @"senderExternalUserId":[dataMessage senderExternalUserId],
+    @"throttled":@(dataMessage.throttled),
+    @"timestampMs":@(dataMessage.timestampMs)
+  }];
+}
+
+
 @end

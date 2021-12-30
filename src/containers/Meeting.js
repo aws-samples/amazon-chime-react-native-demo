@@ -104,6 +104,16 @@ export class Meeting extends React.Component {
     });
 
     /**
+     * Data message handler
+     */
+    this.onDataMessageReceivedSubscription = getSDKEventEmitter().addListener(MobileSDKEvent.OnDataMessageReceive, (dataMessage) => {
+      const str = `Received Data message (topic: ${dataMessage.topic}) ${dataMessage.data} from ${dataMessage.senderAttendeeId}:${dataMessage.senderExternalUserId} at ${dataMessage.timestampMs} throttled: ${dataMessage.throttled}`;
+      console.log(str);
+      NativeFunction.sendDataMessage(dataMessage.topic, str, 1000);
+    })
+    
+
+    /**
      * General Error handler
      */
     this.onErrorSubscription = getSDKEventEmitter().addListener(MobileSDKEvent.OnError, (errorType) => {
@@ -136,6 +146,9 @@ export class Meeting extends React.Component {
     }
     if (this.onRemoveVideoTileSubscription) {
       this.onRemoveVideoTileSubscription.remove();
+    }
+    if (this.onDataMessageReceivedSubscription) {
+      this.onDataMessageReceivedSubscription.remove();
     }
     if (this.onErrorSubscription) {
       this.onErrorSubscription.remove();

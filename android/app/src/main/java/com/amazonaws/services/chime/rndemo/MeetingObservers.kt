@@ -18,11 +18,13 @@ import com.amazonaws.services.chime.sdk.meetings.audiovideo.VolumeUpdate
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileObserver
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileState
 import com.amazonaws.services.chime.sdk.meetings.realtime.RealtimeObserver
+import com.amazonaws.services.chime.sdk.meetings.realtime.datamessage.DataMessage
+import com.amazonaws.services.chime.sdk.meetings.realtime.datamessage.DataMessageObserver
 import com.amazonaws.services.chime.sdk.meetings.session.MeetingSessionStatus
 import com.amazonaws.services.chime.sdk.meetings.utils.logger.ConsoleLogger
 import com.amazonaws.services.chime.sdk.meetings.utils.logger.LogLevel
 
-class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObserver, VideoTileObserver, AudioVideoObserver {
+class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObserver, VideoTileObserver, AudioVideoObserver, DataMessageObserver {
     private val logger = ConsoleLogger(LogLevel.DEBUG)
 
     companion object {
@@ -136,5 +138,10 @@ class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObser
 
     override fun onVideoSessionStopped(sessionStatus: MeetingSessionStatus) {
         // Not implemented for demo purposes
+    }
+
+    override fun onDataMessageReceived(dataMessage: DataMessage) {
+        logger.info(TAG, "Received event for data message")
+        eventEmitter.sendDataMessageEvent(RNEventEmitter.RN_EVENT_DATA_MESSAGE_RECEIVE, dataMessage)
     }
 }
