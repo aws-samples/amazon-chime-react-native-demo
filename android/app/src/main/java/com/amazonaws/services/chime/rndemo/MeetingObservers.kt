@@ -141,7 +141,6 @@ class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObser
     }
 
     override fun onDataMessageReceived(dataMessage: DataMessage) {
-        logger.info(TAG, "Received event for data message")
         eventEmitter.sendDataMessageEvent(RNEventEmitter.RN_EVENT_DATA_MESSAGE_RECEIVE, dataMessage)
     }
 }
