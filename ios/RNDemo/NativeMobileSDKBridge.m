@@ -29,6 +29,7 @@ RCT_EXPORT_MODULE();
     kEventOnAttendeesUnmute,
     kEventOnAddVideoTile,
     kEventOnRemoveVideoTile,
+    kEventOnDataMessageReceive,
     kEventOnError
   ];
 }
@@ -191,6 +192,7 @@ RCT_EXPORT_METHOD(unbindVideoView:(NSNumber * _Nonnull)tileId)
   [meetingSession.audioVideo addRealtimeObserverWithObserver:observer];
   [meetingSession.audioVideo addVideoTileObserverWithObserver:observer];
   [meetingSession.audioVideo addAudioVideoObserverWithObserver:observer];
+  [meetingSession.audioVideo addRealtimeDataMessageObserverWithTopic:@"chat" observer:observer];
   [self startAudioVideo];
 }
 
@@ -243,6 +245,15 @@ RCT_EXPORT_METHOD(unbindVideoView:(NSNumber * _Nonnull)tileId)
        [self sendEventWithName:kEventOnMeetingEnd body:nil];
      }
    }
+}
+
+RCT_EXPORT_METHOD(sendDataMessage:(NSString* _Nonnull)topic data:(NSString* _Nonnull)data lifetimeMs:(int)lifetimeMs)
+{
+  if (meetingSession == nil) {
+    return;
+  }
+  
+  [meetingSession.audioVideo realtimeSendDataMessageWithTopic:topic data:data lifetimeMs:lifetimeMs error:nil];
 }
 
 @end

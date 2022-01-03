@@ -42,6 +42,7 @@ class NativeMobileSDKBridge(
         private const val KEY_AUDIO_HOST_URL = "AudioHostUrl"
         private const val KEY_TURN_CONTROL_URL = "TurnControlUrl"
         private const val KEY_SIGNALING_URL = "SignalingUrl"
+        private const val TOPIC_CHAT = "chat"
 
         var meetingSession: MeetingSession? = null
     }
@@ -113,6 +114,7 @@ class NativeMobileSDKBridge(
             it.audioVideo.addRealtimeObserver(meetingObservers)
             it.audioVideo.addVideoTileObserver(meetingObservers)
             it.audioVideo.addAudioVideoObserver(meetingObservers)
+            it.audioVideo.addRealtimeDataMessageObserver(TOPIC_CHAT, meetingObservers)
             it.audioVideo.start()
             it.audioVideo.startRemoteVideo()
         }
@@ -189,6 +191,11 @@ class NativeMobileSDKBridge(
         meetingSession?.run {
             audioVideo.unbindVideoView(tileId)
         }
+    }
+
+    @ReactMethod
+    fun sendDataMessage(topic: String, message: String, lifetimeMs: Int) {
+        meetingSession?.audioVideo?.realtimeSendDataMessage(topic, message, lifetimeMs)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?): Boolean {

@@ -7,6 +7,7 @@ package com.amazonaws.services.chime.rndemo
 
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.AttendeeInfo
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileState
+import com.amazonaws.services.chime.sdk.meetings.realtime.datamessage.DataMessage
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeMap
@@ -24,6 +25,7 @@ class RNEventEmitter(private val reactContext: ReactApplicationContext) {
         const val RN_EVENT_ATTENDEES_LEAVE = "OnAttendeesLeave"
         const val RN_EVENT_ATTENDEES_MUTE = "OnAttendeesMute"
         const val RN_EVENT_ATTENDEES_UNMUTE = "OnAttendeesUnmute"
+        const val RN_EVENT_DATA_MESSAGE_RECEIVE = "OnDataMessageReceive"
 
         // Additional data for attendee events
         private const val RN_EVENT_KEY_ATTENDEE_ID = "attendeeId"
@@ -33,6 +35,14 @@ class RNEventEmitter(private val reactContext: ReactApplicationContext) {
         private const val RN_EVENT_KEY_VIDEO_TILE_ID = "tileId"
         private const val RN_EVENT_KEY_VIDEO_IS_LOCAL = "isLocal"
         private const val RN_EVENT_KEY_VIDEO_IS_SCREEN_SHARE = "isScreenShare"
+
+        // Additional data for data message
+        private const val RN_EVENT_KEY_DATA_MESSAGE_DATA = "data"
+        private const val RN_EVENT_KEY_DATA_MESSAGE_SENDER_ATTENDEE_ID = "senderAttendeeId"
+        private const val RN_EVENT_KEY_DATA_MESSAGE_SENDER_EXTERNAL_USER_ID = "senderExternalUserId"
+        private const val RN_EVENT_KEY_DATA_MESSAGE_THROTTLED = "throttled"
+        private const val RN_EVENT_KEY_DATA_MESSAGE_TIMESTAMP_MS = "timestampMs"
+        private const val RN_EVENT_KEY_DATA_MESSAGE_TOPIC= "topic"
     }
 
     // Used for events such as attendee join and attendee leave
@@ -42,6 +52,18 @@ class RNEventEmitter(private val reactContext: ReactApplicationContext) {
         map.putString(RN_EVENT_KEY_EXTERNAL_USER_ID, attendeeInfo.externalUserId)
 
         sendReactNativeEvent(eventName, map)
+    }
+
+    fun sendDataMessageEvent(eventName: String, dataMessage: DataMessage) {
+            val map: WritableMap = WritableNativeMap()
+            map.putString(RN_EVENT_KEY_DATA_MESSAGE_DATA, dataMessage.text())
+            map.putString(RN_EVENT_KEY_DATA_MESSAGE_SENDER_ATTENDEE_ID, dataMessage.senderAttendeeId)
+            map.putString(RN_EVENT_KEY_DATA_MESSAGE_SENDER_EXTERNAL_USER_ID, dataMessage.senderExternalUserId)
+            map.putBoolean(RN_EVENT_KEY_DATA_MESSAGE_THROTTLED, dataMessage.throttled)
+            map.putDouble(RN_EVENT_KEY_DATA_MESSAGE_TIMESTAMP_MS, dataMessage.timestampMs.toDouble())
+            map.putString(RN_EVENT_KEY_DATA_MESSAGE_TOPIC, dataMessage.topic)
+
+            sendReactNativeEvent(eventName, map)
     }
 
     // Used for events such as video tile added and video tile removed

@@ -28,6 +28,7 @@ export const MobileSDKEvent = {
   OnAttendeesUnmute: 'OnAttendeesUnmute',
   OnAddVideoTile: 'OnAddVideoTile',
   OnRemoveVideoTile: 'OnRemoveVideoTile',
+  OnDataMessageReceive: 'OnDataMessageReceive',
   OnError: 'OnError',
 }
 
@@ -57,4 +58,5 @@ export const NativeFunction = {
   setCameraOn: NativeModules.NativeMobileSDKBridge.setCameraOn,
   bindVideoView: NativeModules.NativeMobileSDKBridge.bindVideoView,
   unbindVideoView: NativeModules.NativeMobileSDKBridge.unbindVideoView,
+  sendDataMessage: NativeModules.NativeMobileSDKBridge.sendDataMessage,
 }

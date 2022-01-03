@@ -28,6 +28,7 @@
 #define kEventOnAttendeesUnmute @"OnAttendeesUnmute"
 #define kEventOnAddVideoTile @"OnAddVideoTile"
 #define kEventOnRemoveVideoTile @"OnRemoveVideoTile"
+#define kEventOnDataMessageReceive @"OnDataMessageReceive"
 #define kEventOnError @"OnError"
 
 #define kErrorEventOnMaximumConcurrentVideoReached @"OnMaximumConcurrentVideoReached"
@@ -41,6 +42,6 @@
 //  bindVideoView: NativeModules.NativeMobileSDK.bindVideoView
 //}
 
-@interface MeetingObservers : NSObject <RealtimeObserver, VideoTileObserver, AudioVideoObserver>
+@interface MeetingObservers : NSObject <RealtimeObserver, VideoTileObserver, AudioVideoObserver, DataMessageObserver>
 - (id)initWithBridge:(NativeMobileSDKBridge *) bridge logger:(ConsoleLogger * )logger;
 @end
