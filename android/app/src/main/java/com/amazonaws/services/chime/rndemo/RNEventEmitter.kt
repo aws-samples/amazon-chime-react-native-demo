@@ -35,6 +35,10 @@ class RNEventEmitter(private val reactContext: ReactApplicationContext) {
         private const val RN_EVENT_KEY_VIDEO_TILE_ID = "tileId"
         private const val RN_EVENT_KEY_VIDEO_IS_LOCAL = "isLocal"
         private const val RN_EVENT_KEY_VIDEO_IS_SCREEN_SHARE = "isScreenShare"
+        private const val RN_EVENT_KEY_VIDEO_ATTENDEE_ID = "attendeeId"
+        private const val RN_EVENT_KEY_VIDEO_PAUSE_STATE = "pauseState"
+        private const val RN_EVENT_KEY_VIDEO_VIDEO_STREAM_CONTENT_HEIGHT = "videoStreamContentHeight"
+        private const val RN_EVENT_KEY_VIDEO_VIDEO_STREAM_CONTENT_WIDTH = "videoStreamContentWidth"
 
         // Additional data for data message
         private const val RN_EVENT_KEY_DATA_MESSAGE_DATA = "data"
@@ -72,6 +76,10 @@ class RNEventEmitter(private val reactContext: ReactApplicationContext) {
         map.putInt(RN_EVENT_KEY_VIDEO_TILE_ID, tileState.tileId)
         map.putBoolean(RN_EVENT_KEY_VIDEO_IS_LOCAL, tileState.isLocalTile)
         map.putBoolean(RN_EVENT_KEY_VIDEO_IS_SCREEN_SHARE, tileState.isContent)
+        map.putString(RN_EVENT_KEY_VIDEO_ATTENDEE_ID, tileState.attendeeId)
+        map.putInt(RN_EVENT_KEY_VIDEO_PAUSE_STATE, tileState.pauseState.ordinal)
+        map.putInt(RN_EVENT_KEY_VIDEO_VIDEO_STREAM_CONTENT_HEIGHT, tileState.videoStreamContentHeight)
+        map.putInt(RN_EVENT_KEY_VIDEO_VIDEO_STREAM_CONTENT_WIDTH, tileState.videoStreamContentWidth)
         sendReactNativeEvent(eventName, map)
     }
 
