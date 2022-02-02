@@ -83,7 +83,7 @@
 
 - (void)videoTileDidAddWithTileState:(VideoTileState * _Nonnull)tileState
 {
-  [_bridge sendEventWithName:kEventOnAddVideoTile body:@{@"tileId":[NSNumber numberWithInt: (int)tileState.tileId], @"isLocal":@(tileState.isLocalTile), @"isScreenShare":@(tileState.isContent)}];
+  [_bridge sendEventWithName:kEventOnAddVideoTile body:@{@"tileId":[NSNumber numberWithInt: (int)tileState.tileId], @"isLocal":@(tileState.isLocalTile), @"isScreenShare":@(tileState.isContent), @"attendeeId":tileState.attendeeId, @"pauseState":[NSNumber numberWithInt: (int)tileState.pauseState], @"videoStreamContentHeight":[NSNumber numberWithInt: (int)tileState.videoStreamContentHeight], @"videoStreamContentWidth":[NSNumber numberWithInt: (int)tileState.videoStreamContentWidth]}];
 }
 
 - (void)videoTileDidPauseWithTileState:(VideoTileState * _Nonnull)tileState
