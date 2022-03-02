@@ -15,6 +15,7 @@ import com.amazonaws.services.chime.sdk.meetings.audiovideo.AttendeeInfo
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.AudioVideoObserver
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.SignalUpdate
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.VolumeUpdate
+import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.RemoteVideoSource
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileObserver
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileState
 import com.amazonaws.services.chime.sdk.meetings.realtime.RealtimeObserver
@@ -142,5 +143,13 @@ class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObser
 
     override fun onDataMessageReceived(dataMessage: DataMessage) {
         eventEmitter.sendDataMessageEvent(RNEventEmitter.RN_EVENT_DATA_MESSAGE_RECEIVE, dataMessage)
+    }
+
+    override fun onRemoteVideoSourceAvailable(sources: List<RemoteVideoSource>) {
+        // Not implemented for demo purposes
+    }
+
+    override fun onRemoteVideoSourceUnavailable(sources: List<RemoteVideoSource>) {
+        // Not implemented for demo purposes
     }
 }
