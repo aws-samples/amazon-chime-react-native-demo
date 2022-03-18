@@ -163,6 +163,14 @@
   // Not implemented for demo purposes
 }
 
+- (void)remoteVideoSourcesDidBecomeAvailableWithSources:(NSArray<RemoteVideoSource *> * _Nonnull)sources {
+  // Not implemented for demo purposes
+}
+
+- (void)remoteVideoSourcesDidBecomeUnavailableWithSources:(NSArray<RemoteVideoSource *> * _Nonnull)sources {
+  // Not implemented for demo purposes
+}
+
 - (void)dataMessageDidReceivedWithDataMessage:(DataMessage *)dataMessage {
   [_bridge sendEventWithName:kEventOnDataMessageReceive body:@{
     @"data":[dataMessage text],

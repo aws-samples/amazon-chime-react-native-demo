@@ -39,10 +39,12 @@ You can also download the Mobile SDKs from S3 following these steps:
 * Unzip, copy both `amazon-chime-sdk.aar` and `amazon-chime-sdk-media.aar` into the `android/app/libs` folder
 
 ### iOS
-* Download the Amazon Chime SDK binaries
-    - [AmazonChimeSDK-0.18.0.tar.gz](https://amazon-chime-sdk-ios.s3.amazonaws.com/sdk/0.18.0/AmazonChimeSDK-0.18.0.tar.gz)
-    - [AmazonChimeSDKMedia-0.14.0.tar.gz](https://amazon-chime-sdk-ios.s3.amazonaws.com/media/0.14.0/AmazonChimeSDKMedia-0.14.0.tar.gz)
-* Unzip, copy both `AmazonChimeSDK.framework` and `AmazonChimeSDKMedia.framework` into the `ios/RNDemo` folder
+#### From CocoaPods
+With `pod 'AmazonChimeSDK-Bitcode', '0.19.1'` declared in the `ios/Podfile`, the specified version of `AmazonChimeSDK-Bitcode` pod will be downloaded and integrated when you run `pod install` in the step 5 below.
+
+`AmazonChimeSDK-No-Bitcode` is available in [Cocoapods](https://cocoapods.org/) as well.
+
+The current version of Demo app works with AmazonChimeSDK up to `0.19.1`.
 
 ## 3. Deploy the serverless demo
 Follow the instructions in [amazon-chime-sdk-js](https://github.com/aws/amazon-chime-sdk-js/tree/master/demos/serverless) to deploy the serverless demo.
