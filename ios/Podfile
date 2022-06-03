@@ -21,6 +21,20 @@ def flipper_post_install(installer)
   end
 end
 
+# Post Install processing for React Native
+def find_and_replace(dir, findstr, replacestr)
+  Dir[dir].each do |name|
+      text = File.read(name)
+      replace = text.gsub(findstr,replacestr)
+      if text != replace
+          puts "Fix: " + name
+          File.open(name, "w") { |file| file.puts replace }
+          STDOUT.flush
+      end
+  end
+  Dir[dir + '*/'].each(&method(:find_and_replace))
+end
+
 target 'RNDemo' do
   # Pods for RNDemo
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
@@ -68,6 +82,18 @@ target 'RNDemo' do
   # you should disable these next few lines.
   add_flipper_pods!
   post_install do |installer|
+    # This is to fix react native build. See https://github.com/facebook/react-native/issues/28405
+    find_and_replace("../node_modules/react-native/React/CxxBridge/RCTCxxBridge.mm",
+   "_initializeModules:(NSArray<id<RCTBridgeModule>> *)modules", "_initializeModules:(NSArray<Class> *)modules")
+   
+   # Xcode 12.5
+   find_and_replace("../node_modules/react-native/ReactCommon/turbomodule/core/platform/ios/RCTTurboModuleManager.mm",
+   "RCTBridgeModuleNameForClass(module))", "RCTBridgeModuleNameForClass(Class(module)))")
+   
+   # Xcode 13.3
+   find_and_replace("../node_modules/react-native/ReactCommon/turbomodule/core/platform/ios/RCTTurboModuleManager.mm",
+   "RCTBridgeModuleNameForClass(strongModule)", "RCTBridgeModuleNameForClass(Class(strongModule))")
+    
     flipper_post_install(installer)
   end
 end
