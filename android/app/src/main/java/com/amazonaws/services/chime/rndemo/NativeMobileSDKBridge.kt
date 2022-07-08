@@ -215,4 +215,15 @@ class NativeMobileSDKBridge(
             else -> false
         }
     }
+
+    // Required for rn built in EventEmitter Calls.
+    @ReactMethod
+    fun addListener(eventName: String) {
+
+    }
+
+    @ReactMethod
+    fun removeListeners(count: Int) {
+
+    }
 }

@@ -8,6 +8,7 @@ package com.amazonaws.services.chime.rndemo
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.AttendeeInfo
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.VideoTileState
 import com.amazonaws.services.chime.sdk.meetings.realtime.datamessage.DataMessage
+import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeMap
@@ -59,15 +60,15 @@ class RNEventEmitter(private val reactContext: ReactApplicationContext) {
     }
 
     fun sendDataMessageEvent(eventName: String, dataMessage: DataMessage) {
-            val map: WritableMap = WritableNativeMap()
-            map.putString(RN_EVENT_KEY_DATA_MESSAGE_DATA, dataMessage.text())
-            map.putString(RN_EVENT_KEY_DATA_MESSAGE_SENDER_ATTENDEE_ID, dataMessage.senderAttendeeId)
-            map.putString(RN_EVENT_KEY_DATA_MESSAGE_SENDER_EXTERNAL_USER_ID, dataMessage.senderExternalUserId)
-            map.putBoolean(RN_EVENT_KEY_DATA_MESSAGE_THROTTLED, dataMessage.throttled)
-            map.putDouble(RN_EVENT_KEY_DATA_MESSAGE_TIMESTAMP_MS, dataMessage.timestampMs.toDouble())
-            map.putString(RN_EVENT_KEY_DATA_MESSAGE_TOPIC, dataMessage.topic)
+        val map: WritableMap = WritableNativeMap()
+        map.putString(RN_EVENT_KEY_DATA_MESSAGE_DATA, dataMessage.text())
+        map.putString(RN_EVENT_KEY_DATA_MESSAGE_SENDER_ATTENDEE_ID, dataMessage.senderAttendeeId)
+        map.putString(RN_EVENT_KEY_DATA_MESSAGE_SENDER_EXTERNAL_USER_ID, dataMessage.senderExternalUserId)
+        map.putBoolean(RN_EVENT_KEY_DATA_MESSAGE_THROTTLED, dataMessage.throttled)
+        map.putDouble(RN_EVENT_KEY_DATA_MESSAGE_TIMESTAMP_MS, dataMessage.timestampMs.toDouble())
+        map.putString(RN_EVENT_KEY_DATA_MESSAGE_TOPIC, dataMessage.topic)
 
-            sendReactNativeEvent(eventName, map)
+        sendReactNativeEvent(eventName, map)
     }
 
     // Used for events such as video tile added and video tile removed

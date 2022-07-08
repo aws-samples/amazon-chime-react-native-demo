@@ -19,7 +19,7 @@ For more details about the SDK APIs, please refer to the **Getting Started** gui
 The Mobile SDKs for Android could be downloaded from the Maven Central repository, by integrated into your Android project's Gradle files, or you can be directly embedded via .aar files.
 
 #### From Maven
-We recommend obtaining the dependency from Maven. To obtain the dependencies from Maven, add the dependencies to `/android/build.gradle`.
+We recommend obtaining the dependency from Maven. To obtain the dependencies from Maven, add the dependencies to `android/app/build.gradle`.
 
 ```
 dependencies {
