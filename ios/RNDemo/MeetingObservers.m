@@ -122,6 +122,7 @@
   {
     [_logger infoWithMsg:@"Meeting Started!"];
     [_bridge sendEventWithName:kEventOnMeetingStart body:nil];
+    [_bridge configureActiveAudioDevice];
   }
 }
 
@@ -161,6 +162,11 @@
 - (void)audioSessionDidDrop
 {
   // Not implemented for demo purposes
+}
+
+- (void)audioDeviceDidChangeWithFreshAudioDeviceList:(NSArray<MediaDevice *> * _Nonnull)freshAudioDeviceList
+{
+  [_bridge configureActiveAudioDevice];
 }
 
 - (void)remoteVideoSourcesDidBecomeAvailableWithSources:(NSArray<RemoteVideoSource *> * _Nonnull)sources {

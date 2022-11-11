@@ -42,6 +42,6 @@
 //  bindVideoView: NativeModules.NativeMobileSDK.bindVideoView
 //}
 
-@interface MeetingObservers : NSObject <RealtimeObserver, VideoTileObserver, AudioVideoObserver, DataMessageObserver>
+@interface MeetingObservers : NSObject <RealtimeObserver, VideoTileObserver, AudioVideoObserver, DataMessageObserver, DeviceChangeObserver>
 - (id)initWithBridge:(NativeMobileSDKBridge *) bridge logger:(ConsoleLogger * )logger;
 @end

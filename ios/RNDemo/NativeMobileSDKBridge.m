@@ -193,6 +193,7 @@ RCT_EXPORT_METHOD(unbindVideoView:(NSNumber * _Nonnull)tileId)
   [meetingSession.audioVideo addVideoTileObserverWithObserver:observer];
   [meetingSession.audioVideo addAudioVideoObserverWithObserver:observer];
   [meetingSession.audioVideo addRealtimeDataMessageObserverWithTopic:@"chat" observer:observer];
+  [meetingSession.audioVideo addDeviceChangeObserverWithObserver:observer];
   [self startAudioVideo];
 }
 
@@ -254,6 +255,18 @@ RCT_EXPORT_METHOD(sendDataMessage:(NSString* _Nonnull)topic data:(NSString* _Non
   }
   
   [meetingSession.audioVideo realtimeSendDataMessageWithTopic:topic data:data lifetimeMs:lifetimeMs error:nil];
+}
+
+-(void)configureActiveAudioDevice
+{
+  NSArray<MediaDevice*> *audioDeviceList = [meetingSession.audioVideo listAudioDevices];
+  NSArray<MediaDevice*> *sortedDevices = [audioDeviceList sortedArrayUsingComparator:^NSComparisonResult(MediaDevice* device1, MediaDevice* device2) {
+    return device1.type - device2.type;
+  }];
+  
+  if (sortedDevices.count > 0) {
+    [meetingSession.audioVideo chooseAudioDeviceWithMediaDevice:sortedDevices[0]];
+  }
 }
 
 @end

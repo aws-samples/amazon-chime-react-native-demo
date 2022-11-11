@@ -23,4 +23,7 @@
 #define kSignalingUrl @"SignalingUrl"
 
 @interface NativeMobileSDKBridge : RCTEventEmitter <RCTBridgeModule>
+
+-(void)configureActiveAudioDevice;
+
 @end
