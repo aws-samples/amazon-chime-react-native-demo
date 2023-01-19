@@ -34,8 +34,8 @@ You can also download the Mobile SDKs from S3 following these steps:
 
 * Create a folder named `libs` under `android/app`
 * Download the Amazon Chime SDK binaries
-    - [amazon-chime-sdk-0.14.0.tar.gz](https://amazon-chime-sdk-android.s3.amazonaws.com/sdk/0.14.0/amazon-chime-sdk-0.14.0.tar.gz)
-    - [amazon-chime-sdk-media-0.14.0.tar.gz](https://amazon-chime-sdk-android.s3.amazonaws.com/media/0.14.0/amazon-chime-sdk-media-0.14.0.tar.gz)
+    - [amazon-chime-sdk-0.17.9.tar.gz](https://amazon-chime-sdk-android.s3.amazonaws.com/sdk/0.17.9/amazon-chime-sdk-0.17.9.tar.gz)
+    - [amazon-chime-sdk-media-0.17.10.tar.gz](https://amazon-chime-sdk-android.s3.amazonaws.com/media/0.17.10/amazon-chime-sdk-media-0.17.10.tar.gz)
 * Unzip, copy both `amazon-chime-sdk.aar` and `amazon-chime-sdk-media.aar` into the `android/app/libs` folder
 
 ### iOS
@@ -58,6 +58,8 @@ Run `npm start` to start the React Native development server.
 ### Android
 * Connect a physical Android testing device (*we currently do not support x86 architecture/simulators*) to your computer
 * Run `npx react-native run-android` which builds and installs the demo onto the testing device
+
+* In order to run on single device run `npx react-native run-android --deviceId=<device-id>`. Device id can be obtained from `adb devices`
 
 ### iOS
 * Run `pod install` in `ios` folder
