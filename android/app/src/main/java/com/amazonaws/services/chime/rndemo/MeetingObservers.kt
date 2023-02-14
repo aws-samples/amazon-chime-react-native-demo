@@ -152,4 +152,8 @@ class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObser
     override fun onRemoteVideoSourceUnavailable(sources: List<RemoteVideoSource>) {
         // Not implemented for demo purposes
     }
+
+    override fun onCameraSendAvailabilityUpdated(available: Boolean) {
+        // Not implemented for demo purposes
+    }
 }
