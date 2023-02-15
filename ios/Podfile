@@ -16,7 +16,7 @@ target 'RNDemo' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-  pod 'AmazonChimeSDK-Bitcode', '0.22.6'
+  pod 'AmazonChimeSDK-Bitcode', '0.22.7'
 
   target 'RNDemoTests' do
     inherit! :complete

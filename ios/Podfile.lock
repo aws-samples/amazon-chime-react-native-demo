@@ -1,7 +1,7 @@
 PODS:
-  - AmazonChimeSDK-Bitcode (0.22.6):
-    - AmazonChimeSDKMedia-Bitcode (~> 0.17.10)
-  - AmazonChimeSDKMedia-Bitcode (0.17.10)
+  - AmazonChimeSDK-Bitcode (0.22.7):
+    - AmazonChimeSDKMedia-Bitcode (= 0.17.11)
+  - AmazonChimeSDKMedia-Bitcode (0.17.11)
   - boost (1.76.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
@@ -359,7 +359,7 @@ PODS:
     - Yoga (~> 1.14)
 
 DEPENDENCIES:
-  - AmazonChimeSDK-Bitcode (= 0.22.6)
+  - AmazonChimeSDK-Bitcode (= 0.22.7)
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -504,8 +504,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AmazonChimeSDK-Bitcode: 21c55646b17c85f658bd3b4ba16fe7631679f24c
-  AmazonChimeSDKMedia-Bitcode: f0c4c2eb9c756b7231c31e03237abc8015c81c55
+  AmazonChimeSDK-Bitcode: 0504362c4260b0229f2fac0cd9edf9b3c6191d22
+  AmazonChimeSDKMedia-Bitcode: 8b5a340ecf4d4802a2875b872f0d06e6c6fab8c6
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
@@ -554,6 +554,6 @@ SPEC CHECKSUMS:
   Yoga: 7ab6e3ee4ce47d7b789d1cb520163833e515f452
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 524991c4952c082de5f91c291b431bbf19442ee1
+PODFILE CHECKSUM: bf1e325fd31bff21823e860df489dc874ed9f84d
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2
