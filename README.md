@@ -35,7 +35,7 @@ You can also download the Mobile SDKs from S3 following these steps:
 * Create a folder named `libs` under `android/app`
 * Download the Amazon Chime SDK binaries
     - [amazon-chime-sdk-0.17.10.tar.gz](https://amazon-chime-sdk-android.s3.amazonaws.com/sdk/0.17.10/amazon-chime-sdk-0.17.10.tar.gz)
-    - [amazon-chime-sdk-media-0.17.10.tar.gz](https://amazon-chime-sdk-android.s3.amazonaws.com/media/0.17.11/amazon-chime-sdk-media-0.17.11.tar.gz)
+    - [amazon-chime-sdk-media-0.17.11.tar.gz](https://amazon-chime-sdk-android.s3.amazonaws.com/media/0.17.11/amazon-chime-sdk-media-0.17.11.tar.gz)
 * Unzip, copy both `amazon-chime-sdk.aar` and `amazon-chime-sdk-media.aar` into the `android/app/libs` folder
 
 ### iOS
