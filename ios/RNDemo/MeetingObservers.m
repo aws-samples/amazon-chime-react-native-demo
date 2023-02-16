@@ -171,6 +171,10 @@
   // Not implemented for demo purposes
 }
 
+- (void)cameraSendAvailabilityDidChangeWithAvailable:(BOOL)available {
+  // Not implemented for demo purposes
+}
+
 - (void)dataMessageDidReceivedWithDataMessage:(DataMessage *)dataMessage {
   [_bridge sendEventWithName:kEventOnDataMessageReceive body:@{
     @"data":[dataMessage text],
@@ -184,3 +188,4 @@
 
 
 @end
+

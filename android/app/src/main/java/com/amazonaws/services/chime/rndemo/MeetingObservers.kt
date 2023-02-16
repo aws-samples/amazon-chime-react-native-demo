@@ -121,6 +121,10 @@ class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObser
         // Not implemented for demo purposes
     }
 
+    override fun onCameraSendAvailabilityUpdated(available: Boolean) {
+        // Not implemented for demo purposes
+    }
+
     override fun onConnectionBecamePoor() {
         // Not implemented for demo purposes
     }
