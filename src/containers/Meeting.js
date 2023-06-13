@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { View, Text, FlatList, Alert } from 'react-native';
+import { View, Text, FlatList, Alert, Button } from 'react-native';
 import styles from '../Style';
 import { NativeFunction, getSDKEventEmitter, MobileSDKEvent, MeetingError } from '../utils/Bridge';
 import { RNVideoRenderView } from '../components/RNVideoRenderView';
@@ -29,6 +29,8 @@ export class Meeting extends React.Component {
       screenShareTile: null
     };
   }
+
+  remoteTileIdSet = new Set();
 
   componentDidMount() {
     /**
@@ -79,6 +81,14 @@ export class Meeting extends React.Component {
           screenShareTile: tileState.tileId
         }));
       } else {
+        // Calling `NativeFunction.unbindVideoView` with the streaming tile ID triggers the `OnAddVideoTile` event.
+        // Make sure that the demo does not append the streaming tile ID to the list.
+        if (this.remoteTileIdSet.has(tileState.tileId)) {
+          return;
+        } else {
+          this.remoteTileIdSet.add(tileState.tileId);
+        }
+
         this.setState(oldState => ({ 
           ...oldState, 
           videoTiles: [...oldState.videoTiles, tileState.tileId],
@@ -94,6 +104,8 @@ export class Meeting extends React.Component {
           screenShareTile: null
         }));
       } else {
+        this.remoteTileIdSet.delete(tileState.tileId);
+        
         this.setState(oldState => ({ 
           ...oldState, 
           videoTiles: oldState.videoTiles.filter(tileIdToCompare => tileIdToCompare != tileState.tileId),
@@ -157,6 +169,22 @@ export class Meeting extends React.Component {
 
   render() {
     const currentMuted = this.state.mutedAttendee.includes(this.props.selfAttendeeId);
+
+    const onPressRefresh = () => {
+      const videoTiles = [...this.state.videoTiles];
+
+      this.setState(oldState => ({ 
+        ...oldState, 
+        videoTiles: [],
+      }));
+      setTimeout(() => {
+        this.setState(oldState => ({ 
+          ...oldState, 
+          videoTiles,
+        }));
+      }, 1000);
+    };
+
     return (
       <View style={[styles.container, { justifyContent: 'flex-start' }]}>
         <Text style={styles.title}>{this.props.meetingTitle}</Text>
@@ -166,6 +194,7 @@ export class Meeting extends React.Component {
           <HangOffButton onPress={() => NativeFunction.stopMeeting()} />
         </View>
         <Text style={styles.title}>Video</Text>
+        <Button title="Refresh" onPress={onPressRefresh} />
         <View style={styles.videoContainer}>
           {
             this.state.videoTiles.length > 0 ? this.state.videoTiles.map(tileId => 
