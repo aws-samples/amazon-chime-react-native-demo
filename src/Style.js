@@ -27,8 +27,6 @@ const styles = StyleSheet.create({
     color: 'grey' 
   },
   videoContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
     width: '100%',
     // This is an existing React Native issue:
     // When you create a native android component
@@ -36,9 +34,25 @@ const styles = StyleSheet.create({
     // black out
     overflow: 'hidden'
   },
+  videos: {
+    backgroundColor: 'gray',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '100%',
+    overflow: 'hidden'
+  },
   video: {
-    width: '45%',
-    margin: '1%',
+    flex: 1,
+    flexBasis: '50%',
+    width: '50%',
+    height: 100,
+    aspectRatio: 16 / 9,
+  },
+  videoButtons: {
+    flexDirection: 'row',
+  },
+  localVideo: {
+    width: '100%',
     aspectRatio: 16 / 9,
   },
   screenShare: {
