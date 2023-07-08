@@ -27,7 +27,8 @@ import com.amazonaws.services.chime.sdk.meetings.utils.logger.LogLevel
 
 class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObserver, VideoTileObserver, AudioVideoObserver, DataMessageObserver {
     private val logger = ConsoleLogger(LogLevel.DEBUG)
-
+    private var isAudioSessionStopped = true
+    private var isVideoSessionStopped = true
     companion object {
         private const val TAG = "MeetingObservers"
     }
@@ -109,6 +110,8 @@ class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObser
         logger.info(TAG, "Received event for audio session started. Reconnecting: $reconnecting")
 
         if (!reconnecting) {
+            isAudioSessionStopped = false
+            isVideoSessionStopped = false
             eventEmitter.sendReactNativeEvent(RNEventEmitter.RN_EVENT_MEETING_START, null)
         }
     }
@@ -119,6 +122,8 @@ class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObser
 
     override fun onAudioSessionStopped(sessionStatus: MeetingSessionStatus) {
         // Not implemented for demo purposes
+        isAudioSessionStopped = true
+        emitRnMeetingEndEventIfNeeded()
     }
 
     override fun onCameraSendAvailabilityUpdated(available: Boolean) {
@@ -143,6 +148,8 @@ class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObser
 
     override fun onVideoSessionStopped(sessionStatus: MeetingSessionStatus) {
         // Not implemented for demo purposes
+        isVideoSessionStopped = true
+        emitRnMeetingEndEventIfNeeded()
     }
 
     override fun onDataMessageReceived(dataMessage: DataMessage) {
@@ -155,5 +162,11 @@ class MeetingObservers(private val eventEmitter: RNEventEmitter) : RealtimeObser
 
     override fun onRemoteVideoSourceUnavailable(sources: List<RemoteVideoSource>) {
         // Not implemented for demo purposes
+    }
+
+    private fun emitRnMeetingEndEventIfNeeded() {
+        if(isAudioSessionStopped && isVideoSessionStopped) {
+            eventEmitter.sendReactNativeEvent(RNEventEmitter.RN_EVENT_MEETING_END, null)
+        }
     }
 }
