@@ -154,7 +154,6 @@ class NativeMobileSDKBridge(
         logger.info(TAG, "Called stopMeeting")
 
         meetingSession?.audioVideo?.stop()
-        eventEmitter.sendReactNativeEvent(RN_EVENT_MEETING_END, null)
     }
 
     @ReactMethod
