@@ -34,7 +34,8 @@ target 'RNDemo' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-  pod 'AmazonChimeSDK-Bitcode', '0.22.7'
+  pod 'AmazonChimeSDK', '0.27.2'
+  pod 'AmazonChimeSDKMedia', '0.25.2'
 
   target 'RNDemoTests' do
     inherit! :complete
@@ -50,5 +51,23 @@ target 'RNDemo' do
   post_install do |installer|
     react_native_post_install(installer)
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
+
+    legacy_cpp_targets = ['RCT-Folly']
+    installer.pods_project.targets.each do |target|
+      uses_legacy_cpp = legacy_cpp_targets.include?(target.name) || target.name.start_with?('Flipper')
+      next unless uses_legacy_cpp
+
+      target.build_configurations.each do |config|
+        # Keep legacy Folly/Flipper code on a compatible C++ standard with modern Xcode.
+        config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'gnu++14'
+
+        if target.name.start_with?('Flipper')
+          other_cxx_flags = config.build_settings['OTHER_CPLUSPLUSFLAGS'] || '$(inherited)'
+          unless other_cxx_flags.include?('-include functional')
+            config.build_settings['OTHER_CPLUSPLUSFLAGS'] = "#{other_cxx_flags} -include functional"
+          end
+        end
+      end
+    end
   end
 end

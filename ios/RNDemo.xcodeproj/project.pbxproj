@@ -324,11 +324,11 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNDemo-RNDemoTests/Pods-RNDemo-RNDemoTests-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDK/AmazonChimeSDK.framework/AmazonChimeSDK",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDKMedia/AmazonChimeSDKMedia.framework/AmazonChimeSDKMedia",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/double-conversion/double-conversion.framework/double-conversion",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/glog/glog.framework/glog",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDK-Bitcode/AmazonChimeSDK.framework/AmazonChimeSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDKMedia-Bitcode/AmazonChimeSDKMedia.framework/AmazonChimeSDKMedia",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog/glog.framework/glog",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -372,11 +372,11 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNDemo/Pods-RNDemo-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDK/AmazonChimeSDK.framework/AmazonChimeSDK",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDKMedia/AmazonChimeSDKMedia.framework/AmazonChimeSDKMedia",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/double-conversion/double-conversion.framework/double-conversion",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/glog/glog.framework/glog",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDK-Bitcode/AmazonChimeSDK.framework/AmazonChimeSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AmazonChimeSDKMedia-Bitcode/AmazonChimeSDKMedia.framework/AmazonChimeSDKMedia",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog/glog.framework/glog",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
